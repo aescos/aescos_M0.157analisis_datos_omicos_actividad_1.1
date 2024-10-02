@@ -1,0 +1,45 @@
+---
+title: "aescos_M0.157analisis_datos_omicos_actividad_1.1"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+date: "2024-10-02"
+---
+
+```{r}
+rm(list = ls())
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1. Select a GEO (Gene Expression Omnibus) datasetfrom the list presented in the “GEOdatasets_enhanced.xls” document available in the resources of the activity.
+
+He seleccionado el data set MyD88 deficient macrophage response to zymosan.
+Estudio realizado en mus musculus (ratón)
+dataset: GDS2686, Serie:	GSE6376
+
+### 2. Leer los datos desde GEO utilizando el paquete GEOquery. Esto os proporcionará un objeto clase expressionSet con los datos normalizados y una tabla adicional con información sobre el estudio.
+
+```{r}
+require(GEOquery)
+gds <- getGEO("GDS2686")
+```
+
+### 3. Determinar la estructura de los datos (filas, columnas)y el diseño del estudio (grupos de muestras o individuos, tratamientos si los hay, etc.) que los ha generado.
+ – La información del experimento podéis descargarla también de GEO, bien con GEOquery si proporcionáis el identificador de dataset GDSxxxx o accediendo a la página del estudio.
+
+```{r}
+class(gds)
+```
+
+```{r}
+slotNames(gds)
+```
+
+```{r}
+head(Meta(gds))
+```
+
